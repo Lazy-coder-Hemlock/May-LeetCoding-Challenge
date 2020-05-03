@@ -33,3 +33,25 @@ public:
         return res;
     }
 };
+
+
+#Ransom Note
+
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine){
+        vector<char>mag(magazine.begin(),magazine.end());
+        for(char i:ransomNote){
+            vector<char>::iterator it;
+            it=find(mag.begin(),mag.end(),i);
+            if(it!=mag.end()){
+                int store=it-mag.begin();
+                mag.erase(mag.begin()+store);
+            }
+            else{
+                return false;
+            }
+        }
+    return true;
+    }
+};
