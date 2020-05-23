@@ -1,0 +1,48 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#Interval list INtersections
+class Solution {
+public:
+    vector<vector<int>> intervalIntersection(vector<vector<int>>& A, vector<vector<int>>& B) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        int first=0;
+        int second=0;
+        int f_size=A.size();
+        int s_size=B.size();
+        vector<vector<int>>res;
+        while(first<f_size && second<s_size){
+            if(A[first][1]>=B[second][0] && A[first][0]<=B[second][1]){
+                int ele=max(A[first][0],B[second][0]);
+                int ele2=min(A[first][1],B[second][1]);
+                    res.push_back({ele,ele2});
+            }
+            if(A[first][1]>B[second][1])
+                second++;
+            else
+                first++;
+        }
+        return res;
+    }
+};
+
