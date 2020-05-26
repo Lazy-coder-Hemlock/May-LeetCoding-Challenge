@@ -91,3 +91,24 @@ public:
     }
 };
 
+#contiguous array
+
+
+class Solution:
+    def findMaxLength(self, nums: List[int]) -> int:
+        d={}
+        sum=0
+        sub=0
+        for i in range(len(nums)):
+            if nums[i]==0:
+                sum+=-1
+            elif nums[i]==1:
+                sum+=1
+            if sum==0:
+                sub=i+1
+            if sum in d:
+                sub=max(sub,i-d[sum])
+            else:
+                d[sum]=i
+        return sub
+
